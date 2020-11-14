@@ -1,3 +1,4 @@
+//sum
 function arraySum(el) {
     let responseSum = 0;
     for (let i = 0; i < el.length; i++) {
@@ -12,7 +13,7 @@ function arraySum(el) {
 }
 console.log(arraySum([NaN, [1], null, undefined, -123, 1123]));
 console.log('-----');
-
+//max
 function arrayMax(el) {
     let val = null;
     for (let i = 0; i < el.length; i++) {
@@ -31,7 +32,7 @@ function arrayMax(el) {
 
 console.log(arrayMax([1, [false], null]));
 console.log('-----');
-
+//min
 function arrayMin(el) {
     let val = null;
     for (let i = 0; i < el.length; i++) {
@@ -50,7 +51,7 @@ function arrayMin(el) {
 
 console.log(arrayMin([1, [false], null]));
 console.log('-----');
-
+//water 
 function array(el) {
     let result = 0;
     let num;
