@@ -1,49 +1,57 @@
-//Сума всех элементов 
-function massiveSum(el) {
-    let responseSum = [0];
+function arraySum(el) {
+    let responseSum = 0;
     for (let i = 0; i < el.length; i++) {
-        if (!isNaN(el[i]) && el[i] !== undefined) {
-            responseSum[0] += el[i];
+        if (!isNaN(el[i]) && typeof el[i] === 'number') {
+            responseSum += el[i];
+        }
+        if(!isNaN(el[i]) && typeof el[i] === 'object' && el[i] !== null && typeof el[i][0] === 'number'){
+            responseSum += el[i][0];
         }
     }
-    return Number(responseSum);
+    return responseSum;
 }
-console.log(massiveSum([NaN, NaN, null, undefined, -123, 1123]));
-console.log('-----');
-//Максимальное значение
-function massiveMax(el) {
-    let val = el[0];
-    for (let i = 1; i < el.length; i++) {
-        if (isNaN(val)) {
-            val = el[i];
-        }
-        if (el[i] !== undefined && !isNaN(el[i]) && el[i] > val) {
-            val = el[i];
-        }
-    }
-    return Number(val);
-}
-console.log(massiveMax([NaN, 123, null, undefined, -123, 1123]));
-console.log('-----');
-//Минимальное значение
-function massiveMin(el) {
-    let val = el[0];
-    for (let i = 1; i < el.length; i++) {
-        if (isNaN(val)) {
-            val = el[i];
-        }
-        if (el[i] !== undefined && !isNaN(el[i]) && el[i] < val) {
-            val = el[i];
-        }
-    }
-    return Number(val);
-}
-
-console.log(massiveMin([NaN, 123, null, undefined, -123, 1123]));
+console.log(arraySum([NaN, [1], null, undefined, -123, 1123]));
 console.log('-----');
 
-//Алгоритм на подсчёт воды в ямах 
-function massive(el) {
+function arrayMax(el) {
+    let val = null;
+    for (let i = 0; i < el.length; i++) {
+        if(val === null && typeof el[i] === 'number' && !isNaN(val)){
+            val = el[i];
+        }
+        if (typeof el[i] === 'number' && el[i] > val && !isNaN(el[i])) {
+            val = el[i];
+        }
+        if(typeof el[i] === 'object' && el[i] !== null && el[i][0] > val && !isNaN(el[i][0]) && typeof el[i][0] === 'number'){
+            val = el[i];
+        }
+    }
+    return val;
+}
+
+console.log(arrayMax([1, [false], null]));
+console.log('-----');
+
+function arrayMin(el) {
+    let val = null;
+    for (let i = 0; i < el.length; i++) {
+        if(val === null && typeof el[i] === 'number' && !isNaN(val)){
+            val = el[i];
+        }
+        if (typeof el[i] === 'number' && el[i] < val && !isNaN(el[i])) {
+            val = el[i];
+        }
+        if(typeof el[i] === 'object' && el[i] !== null && el[i][0] < val && !isNaN(el[i][0]) && typeof el[i][0] === 'number'){
+            val = el[i];
+        }
+    }
+    return val;
+}
+
+console.log(arrayMin([1, [false], null]));
+console.log('-----');
+
+function array(el) {
     let result = 0;
     let num;
     for (let i = 0; i < el.length; i++) {
@@ -75,4 +83,4 @@ function massive(el) {
     return result;
 }
 
-console.log(massive([2, 1, 5, 5, 4, 5, 5, 3, 6]));
+console.log(array([2, 1, 5, 5, 4, 5, 5, 3, 6]));
